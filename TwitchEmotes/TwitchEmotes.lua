@@ -7964,34 +7964,34 @@ function OpenMailBodyText.SetText(self, msg, ...)
 end
 
 function Emoticons_LoadMiniMapDropdown(self, level, menuList)
-    local info = L_UIDropDownMenu_CreateInfo();
-    info.isNotRadio = true;
-    info.notCheckable = true;
-    info.notClickable = false;
-    if (level or 1) == 1 then
-        for k, v in ipairs(dropdown_options) do
-            if (Emoticons_Settings["FAVEMOTES"][k]) then
-                info.hasArrow = true;
-                info.text = v[1];
-                info.value = false;
-                info.menuList = k;
-                L_UIDropDownMenu_AddButton(info);
-            end
-        end
-    else
-        first = true;
-        for ke, va in ipairs(dropdown_options[menuList]) do
-            if (first) then
-                first = false;
-            else
-                -- print(ke.." "..va);
-                info.text = "|T" .. defaultpack[va] .. "|t " .. va;
-                info.value = va;
-                info.func = Emoticons_Dropdown_OnClick;
-                L_UIDropDownMenu_AddButton(info, level);
-            end
-        end
-    end
+    -- local info = L_UIDropDownMenu_CreateInfo();
+    -- info.isNotRadio = true;
+    -- info.notCheckable = true;
+    -- info.notClickable = false;
+    -- if (level or 1) == 1 then
+    --     for k, v in ipairs(dropdown_options) do
+    --         if (Emoticons_Settings["FAVEMOTES"][k]) then
+    --             info.hasArrow = true;
+    --             info.text = v[1];
+    --             info.value = false;
+    --             info.menuList = k;
+    --             L_UIDropDownMenu_AddButton(info);
+    --         end
+    --     end
+    -- else
+    --     first = true;
+    --     for ke, va in ipairs(dropdown_options[menuList]) do
+    --         if (first) then
+    --             first = false;
+    --         else
+    --             -- print(ke.." "..va);
+    --             info.text = "|T" .. defaultpack[va] .. "|t " .. va;
+    --             info.value = va;
+    --             info.func = Emoticons_Dropdown_OnClick;
+    --             L_UIDropDownMenu_AddButton(info, level);
+    --         end
+    --     end
+    -- end
 end
 
 function Emoticons_Dropdown_OnClick(self, arg1, arg2, arg3)
