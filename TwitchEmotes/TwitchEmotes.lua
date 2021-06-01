@@ -25,7 +25,7 @@ Emoticons_Settings = {
     ["FAVEMOTES"] = {
         true, true, true, true, true, true, true, true, true, true, true, true,
         true, true, true, true, true, true, true, true, true, true, true, true,
-        true, true, true
+        true, true, true, true
     }
 };
 
@@ -55,7 +55,7 @@ local origsettings = {
     ["FAVEMOTES"] = {
         true, true, true, true, true, true, true, true, true, true, true, true,
         true, true, true, true, true, true, true, true, true, true, true, true,
-        true, true, true
+        true, true, true, true
     }
 };
 
@@ -7660,7 +7660,7 @@ local dropdown_options = {
         "SWEATSTINY", "YEE", "VoHiYo", "AYAYA","bjornoVV", "bjornoVVona", 
         "catJAM", "ThrallS", "KomodoHype","StareBruh", "Clap", "cptfriHE", 
         "Del", "ednasly", "endANELE","endBomb", "ThisIsFine", "pokiW", 
-        "AMAZIN", "AMAZINGA", "OUR"
+        "AMAZIN", "AMAZINGA"
     },
     [06] = { -- 34
         "Custom 2", "ANEBruh", "endDawg", "endFrench", "endHarambe", "endKyori",
@@ -7845,6 +7845,9 @@ local dropdown_options = {
         "PepeWheels","peepOK", "peepKing", "PepeSoldier", "FeelsDankMan", "spit1", 
         "spit2","suze4know", "GAmer", "PepeSmurf", "PauseChamp", "PogChampius",
         "WeirdChampius", "PogO", "PogOW"
+    },
+    [28] = {
+        "Beef Overload", "OUR"
     }
 };
 
@@ -7944,7 +7947,7 @@ end
 
 -- Put your code that you want on a minimap button click here.  arg1="LeftButton", "RightButton", etc
 function MyMod_MinimapButton_OnClick()
-    L_ToggleDropDownMenu(1, nil, EmoticonMiniMapDropDown,
+    ToggleDropDownMenu(1, nil, EmoticonMiniMapDropDown,
                            MyMod_MinimapButton, 0, 0);
 end
 
@@ -7964,34 +7967,34 @@ function OpenMailBodyText.SetText(self, msg, ...)
 end
 
 function Emoticons_LoadMiniMapDropdown(self, level, menuList)
-    -- local info = L_UIDropDownMenu_CreateInfo();
-    -- info.isNotRadio = true;
-    -- info.notCheckable = true;
-    -- info.notClickable = false;
-    -- if (level or 1) == 1 then
-    --     for k, v in ipairs(dropdown_options) do
-    --         if (Emoticons_Settings["FAVEMOTES"][k]) then
-    --             info.hasArrow = true;
-    --             info.text = v[1];
-    --             info.value = false;
-    --             info.menuList = k;
-    --             L_UIDropDownMenu_AddButton(info);
-    --         end
-    --     end
-    -- else
-    --     first = true;
-    --     for ke, va in ipairs(dropdown_options[menuList]) do
-    --         if (first) then
-    --             first = false;
-    --         else
-    --             -- print(ke.." "..va);
-    --             info.text = "|T" .. defaultpack[va] .. "|t " .. va;
-    --             info.value = va;
-    --             info.func = Emoticons_Dropdown_OnClick;
-    --             L_UIDropDownMenu_AddButton(info, level);
-    --         end
-    --     end
-    -- end
+    local info = UIDropDownMenu_CreateInfo();
+    info.isNotRadio = true;
+    info.notCheckable = true;
+    info.notClickable = false;
+    if (level or 1) == 1 then
+        for k, v in ipairs(dropdown_options) do
+            if (Emoticons_Settings["FAVEMOTES"][k]) then
+                info.hasArrow = true;
+                info.text = v[1];
+                info.value = false;
+                info.menuList = k;
+                UIDropDownMenu_AddButton(info);
+            end
+        end
+    else
+        first = true;
+        for ke, va in ipairs(dropdown_options[menuList]) do
+            if (first) then
+                first = false;
+            else
+                -- print(ke.." "..va);
+                info.text = "|T" .. defaultpack[va] .. "|t " .. va;
+                info.value = va;
+                info.func = Emoticons_Dropdown_OnClick;
+                UIDropDownMenu_AddButton(info, level);
+            end
+        end
+    end
 end
 
 function Emoticons_Dropdown_OnClick(self, arg1, arg2, arg3)

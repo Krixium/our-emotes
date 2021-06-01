@@ -452,7 +452,7 @@ Revert PowaBarSliderTemplate to inherit from OptionsSliderTemplate if it's fixed
   <Frame name="EmoticonMiniMapDropDown" inherits="UIDropDownMenuTemplate" id="1">
     <Scripts>
       <OnLoad>
-	      L_UIDropDownMenu_Initialize(self, Emoticons_LoadMiniMapDropdown, "MENU", 1);
+	      UIDropDownMenu_Initialize(self, Emoticons_LoadMiniMapDropdown, "MENU", 1);
       </OnLoad>
     </Scripts>
   </Frame>
